@@ -1,15 +1,11 @@
 //
 //  DetailViewController.m
-//  Restuarants
+//  objCDay1
 //
 //  Created by Firm Read on 4/1/13.
 //  Copyright (c) 2013 Firm Read. All rights reserved.
 //
-
 #import "DetailViewController.h"
-
-
-float priceOfDinner;
 
 @interface DetailViewController ()
 @property (strong, nonatomic) UIPopoverController *masterPopoverController;
@@ -36,61 +32,77 @@ float priceOfDinner;
 
 - (void)configureView
 {
-    // Update the user interface for the detail item.
-
+    // Q: How to make an array instead of repeating this bunch of codes?
+    
     int numberOfGuest = 1;
-    NSString* someText = [NSString stringWithFormat:@"Price for %i: $%.2f", numberOfGuest, [self priceOfDinnerForGuest:numberOfGuest]];
-    self.detailDescriptionLabel.text = someText;
+    NSString* guest1String  = [NSString stringWithFormat:@"%i person", numberOfGuest];
+    self.guest1.text        = guest1String;
+    NSString* wine1String   = [NSString stringWithFormat:@"%i ea", [self numberOfWine:numberOfGuest]];
+    self.wine1.text         = wine1String;
+    NSString* dessert1String= [NSString stringWithFormat:@"%i ea", [self numberOfAppertizer:numberOfGuest]];
+    self.dessert1.text      = dessert1String;
+    NSString* price1String  = [NSString stringWithFormat:@"$%.2f", [self priceOfDinnerForGuest:numberOfGuest]];
+    self.price1.text        = price1String;
     
-    int numberOfGuest2 = 2;
-    NSString* someText2 = [NSString stringWithFormat:@"Price for %i: $%.2f", numberOfGuest2, [self priceOfDinnerForGuest:numberOfGuest2]];
-    self.label2.text = someText2;
+    numberOfGuest = 4;
+    NSString* guest2String  = [NSString stringWithFormat:@"%i person", numberOfGuest];
+    self.guest2.text        = guest2String;
+    NSString* wine2String   = [NSString stringWithFormat:@"%i ea", [self numberOfWine:numberOfGuest]];
+    self.wine2.text         = wine2String;
+    NSString* dessert2String= [NSString stringWithFormat:@"%i ea", [self numberOfAppertizer:numberOfGuest]];
+    self.dessert2.text      = dessert2String;
+    NSString* price2String  = [NSString stringWithFormat:@"$%.2f", [self priceOfDinnerForGuest:numberOfGuest]];
+    self.price2.text        = price2String;
     
-    int numberOfGuest3 = 4;
-    NSString* someText3 = [NSString stringWithFormat:@"Price for %i: $%.2f", numberOfGuest3, [self priceOfDinnerForGuest:numberOfGuest3]];
-    self.label3.text = someText3;
+    numberOfGuest = 5;
+    NSString* guest3String  = [NSString stringWithFormat:@"%i person", numberOfGuest];
+    self.guest3.text        = guest3String;
+    NSString* wine3String   = [NSString stringWithFormat:@"%i ea", [self numberOfWine:numberOfGuest]];
+    self.wine3.text         = wine3String;
+    NSString* dessert3String= [NSString stringWithFormat:@"%i ea", [self numberOfAppertizer:numberOfGuest]];
+    self.dessert3.text      = dessert3String;
+    NSString* price3String  = [NSString stringWithFormat:@"$%.2f", [self priceOfDinnerForGuest:numberOfGuest]];
+    self.price3.text        = price3String;
     
-    
-    
-//    if (self.detailItem) {
-//        self.detailDescriptionLabel.text = [self.detailItem description];
-//    }
-//    [self text];
-//    self.text;
-//    
-//    [self setText:@"SS"];
-//    self.text = @"SS";
-//    
-//    [self setText:@"SS"  andThisOtherThing:@""]
 }
+
 
 - (float) priceOfDinnerForGuest:(int) person
 {
+    float priceOfDinner;
     
     float entree        = 21.50;
     float appertizer    = 8.00;
     float wine          = 43.00;
     float dessert       = 4.75;
-    
-    int numberOfAppertizer  = ceilf((float)person/2);
-    int numberOfWine        = ceilf((float)person/4);
+
     
     float totalEntree       = entree * person;
-    float totalAppertizer   = appertizer * numberOfAppertizer;
-    float totalWine         = wine * numberOfWine;
+    float totalAppertizer   = appertizer * [self numberOfAppertizer: person];
+    float totalWine         = wine *       [self numberOfWine: person];
     float totalDessert      = dessert * person;
     
-//    NSLog(@"my first log, hehe");
-//    NSLog(@"Total price of entree $%f for %i person", totalEntree, person );
-//    NSLog(@"Total price of desert $%f for %i person", totalDessert, person );
-    NSLog(@"number of guest is %i person", person);
-    NSLog(@"number of appertizer is %i", numberOfAppertizer);
-    NSLog(@"number of wine is %i", numberOfWine);
+    NSLog(@"----calculation for %i person(s)----", person);
+    NSLog(@"total price of entree is %.2f", totalEntree);
+    NSLog(@"total price of entree is %.2f", totalAppertizer);
+    NSLog(@"total price of entree is %.2f", totalWine);
+    NSLog(@"total price of entree is %.2f", totalDessert);
     
     priceOfDinner = totalEntree + totalAppertizer + totalWine + totalDessert;
     return priceOfDinner;
 }
 
+- (int) numberOfAppertizer:(int) person
+{
+    int appertizerDish      = ceilf((float)person/2);
+    return appertizerDish;
+}
+
+- (int) numberOfWine:(int) person
+{
+    int wineBottle          = ceilf((float)person/4);
+    return wineBottle;
+}
 
 
 - (void)viewDidLoad
