@@ -29,4 +29,13 @@
 @property (weak, nonatomic) IBOutlet UILabel *price2;
 @property (weak, nonatomic) IBOutlet UILabel *price3;
 
+@property (weak, nonatomic) IBOutlet UILabel *tip1;
+@property (weak, nonatomic) IBOutlet UILabel *tip2;
+@property (weak, nonatomic) IBOutlet UILabel *tip3;
+
+@property (weak, nonatomic) IBOutlet UILabel *tax1;
+@property (weak, nonatomic) IBOutlet UILabel *tax2;
+@property (weak, nonatomic) IBOutlet UILabel *tax3;
+
+
 @end
