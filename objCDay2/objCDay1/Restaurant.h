@@ -12,6 +12,7 @@
 
 @property NSString* name;
 @property NSString* cuisine;
+@property NSString* imageFileName;
 
 @property float entreePrice;
 @property float appetizerPrice;

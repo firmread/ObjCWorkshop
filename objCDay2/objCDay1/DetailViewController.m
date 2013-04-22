@@ -61,6 +61,8 @@
     self.navigationItem.title = enjuu.name;
     self.cuisineType.text = enjuu.cuisine;
     
+//    self.mainImage.image = [UIImage imageNamed:displayRestaurant.imageFileName];
+    
     // Q: How to make an array instead of repeating this bunch of codes?
     
     
@@ -176,4 +178,18 @@
     self.masterPopoverController = nil;
 }
 
+- (IBAction)doSomething:(id)sender {
+    self.cuisineType.alpha = .5;
+}
+
+- (IBAction)enlargeImage:(id)sender {
+    [UIView beginAnimations:@"fadeOut" context:nil];
+    [UIView setAnimationDuration:3.5];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+    
+    self.mainImage.alpha = self.mainImage.alpha * .5;
+    self.mainImage.frame = CGRectMake(0, 0, 400, 400);
+    [UIView commitAnimations];
+
+}
 @end

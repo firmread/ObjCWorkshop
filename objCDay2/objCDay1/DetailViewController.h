@@ -15,6 +15,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *restaurantName;
 @property (weak, nonatomic) IBOutlet UILabel *cuisineType;
+@property (weak, nonatomic) IBOutlet UIImageView *mainImage;
 
 
 @property (weak, nonatomic) IBOutlet UILabel *guest1;
@@ -41,5 +42,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *tax2;
 @property (weak, nonatomic) IBOutlet UILabel *tax3;
 
+- (IBAction)doSomething:(id)sender;
+- (IBAction)enlargeImage:(id)sender;
 
 @end
